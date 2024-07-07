@@ -21,6 +21,7 @@ function Login(){
         .then(async res=>{    
             const a = await res.json();
             if(a.message !== null){
+                localStorage.setItem('token', a.message);
                 navigate('/home')
             }
         })

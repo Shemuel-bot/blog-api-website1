@@ -1,0 +1,29 @@
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 40vw;
+}
+.content{
+    background-color: rgba(207, 207, 207, 0.76);
+    color: black;
+    font-size: large;
+    padding: 20px;
+    width: 500px;
+    min-height: 450px;
+    border-radius: 5px;
+}
+.commentbox{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.btn{
+    background-color: #1f2937;
+    color: white;
+}
+.textarea{
+    width: 250px;
+    height: 50px;
+    resize: none;
+}

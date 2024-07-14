@@ -2,8 +2,21 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import style from "../styles/Home.module.css";
 import plus from "../assets/plus.png";
-import user from "../assets/user.png";
+import user from "../assets/logout.png";
 import BlogBtn from "./BlogBtn";
+import createGuest from 'cross-domain-storage/guest';
+import createHost from 'cross-domain-storage/host';
+
+const storageHost = createHost([
+  {
+    origin: 'http://localhost:5174',
+    allowedMethods: ['get', 'set', 'remove'],
+  },
+  {
+    origin: 'http://localhost:5173',
+    allowedMethods: ['get'],
+  },
+]);
 
 function Home() {
   const navigate = useNavigate();
@@ -22,10 +35,12 @@ function Home() {
       setArray(a.posts);
     });
   }, []);
+
   for (let i = 0; i < array.length; i++) {
     posts.push(
       <BlogBtn
         key={array[i]._id}
+        id={array[i]._id}
         title={array[i].title}
         user={array[i].user}
         timeStamp={array[i].timeStamp}
@@ -38,12 +53,15 @@ function Home() {
       <h1 className={style.h1}>Blogs</h1>
       <div className={style.body} id="body">
         <div className={style.btnsdiv}>
-          <button className={style.newpostbtn}>
-            <img src={user} alt="" className={style.userimg} />
+          <button className={style.newpostbtn} onClick={()=>{localStorage.removeItem('token'); navigate('/log-in');}}>
+            <img src={user} alt="logout" className={style.userimg} />
           </button>
-          <button className={style.newpostbtn}>
+          <button className={style.newpostbtn} onClick={()=>{
+            const guestStorage = createGuest('http://localhost:5173/');
+            guestStorage.set('token', localStorage.getItem('token'));
+          }}>
             <a href="http://localhost:5173/">
-              <img src={plus} alt="" className={style.newpostimg} />
+              <img src={plus} alt="new post" className={style.newpostimg} />
             </a>
           </button>
         </div>

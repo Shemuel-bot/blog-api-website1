@@ -5,6 +5,7 @@ function BlogBtn(prop){
     return(
         <>
         <button onClick={()=>{
+            localStorage.setItem('postId',prop.id);
             localStorage.setItem('author', prop.user);
             localStorage.setItem('title', prop.title);
             localStorage.setItem('content', prop.content);

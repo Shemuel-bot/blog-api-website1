@@ -12,7 +12,7 @@ import Blog from './components/Blog.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Login />,
   },
   {
     path:'log-in',

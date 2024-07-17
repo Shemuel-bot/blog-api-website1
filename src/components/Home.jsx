@@ -4,17 +4,17 @@ import style from "../styles/Home.module.css";
 import plus from "../assets/plus.png";
 import user from "../assets/logout.png";
 import BlogBtn from "./BlogBtn";
-import createGuest from 'cross-domain-storage/guest';
-import createHost from 'cross-domain-storage/host';
+import createGuest from "cross-domain-storage/guest";
+import createHost from "cross-domain-storage/host";
 
 const storageHost = createHost([
   {
-    origin: 'http://localhost:5174',
-    allowedMethods: ['get', 'set', 'remove'],
+    origin: "http://localhost:5174",
+    allowedMethods: ["get", "set", "remove"],
   },
   {
-    origin: 'http://localhost:5173',
-    allowedMethods: ['get'],
+    origin: "http://localhost:5173",
+    allowedMethods: ["get"],
   },
 ]);
 
@@ -25,7 +25,7 @@ function Home() {
   useEffect(() => {
     fetch("https://blog-api.adaptable.app/api/all-posts", {
       mode: "cors",
-      headers: { 'authorization': localStorage.getItem("token") },
+      headers: { authorization: localStorage.getItem("token") },
     }).then(async (res) => {
       if (res.status === 403) {
         navigate("/log-in");
@@ -53,13 +53,22 @@ function Home() {
       <h1 className={style.h1}>Blogs</h1>
       <div className={style.body} id="body">
         <div className={style.btnsdiv}>
-          <button className={style.newpostbtn} onClick={()=>{localStorage.removeItem('token'); navigate('/log-in');}}>
+          <button
+            className={style.newpostbtn}
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/log-in");
+            }}
+          >
             <img src={user} alt="logout" className={style.userimg} />
           </button>
-          <button className={style.newpostbtn} onClick={()=>{
-            const guestStorage = createGuest('http://localhost:5173/');
-            guestStorage.set('token', localStorage.getItem('token'));
-          }}>
+          <button
+            className={style.newpostbtn}
+            onClick={() => {
+              const guestStorage = createGuest("http://localhost:5173/");
+              guestStorage.set("token", localStorage.getItem("token"));
+            }}
+          >
             <a href="http://localhost:5173/">
               <img src={plus} alt="new post" className={style.newpostimg} />
             </a>

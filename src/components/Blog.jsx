@@ -4,13 +4,18 @@ import style from '../styles/Blog.module.css';
 
 
 const handleSubmit = () => {
-    fetch('http://localhost:3000/api/post-comment', {
+    fetch('https://blog-api.adaptable.app/api/post-comment', {
         method: 'post',
         headers:{'Content-Type':'application/json', 'authorization': `Bearer ${localStorage.getItem('token')}`},
         body: JSON.stringify({
             content: document.getElementById('content').value,
             id: localStorage.getItem('postId'),
         }),
+    })
+    .then(async res=>{
+        const a = await res.json();
+        console.log(a)
+        window.location.reload();
     })
     .catch(err=>{console.log(err)})
 }
@@ -20,7 +25,7 @@ function Blog(){
     const comments = [];
 
     useEffect(()=>{
-        fetch('http://localhost:3000/api/posts-comments', {
+        fetch('https://blog-api.adaptable.app/api/posts-comments', {
             method: 'post',
             headers:{'Content-Type':'application/json', 'authorization': localStorage.getItem('token')},
             body: JSON.stringify({
@@ -37,7 +42,7 @@ function Blog(){
     if(array[0] != null){
        
         if(typeof array[0] ===  typeof []){
-            console.log(array[0].comments.length);
+            
         for (let i = 0; i < array[0].comments.length; i++) {
             
             comments.push(<>
@@ -72,7 +77,6 @@ function Blog(){
          <textarea name="" placeholder='Comment here' id="content" className={style.textarea}></textarea>
          <button className={style.btn} onClick={()=>{
             handleSubmit();
-            window.location.reload();
             }}>Post</button>
          </div>
          <h2>Comments</h2>

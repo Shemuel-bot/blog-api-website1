@@ -3,16 +3,17 @@ import style from '../styles/Log_In.module.css';
 import { Link } from 'react-router-dom';
 
 
-const handleSubmit = async () => {
-    fetch('http://localhost:3000/api/sign-up', {
-         method: "POST",
-         headers: {'Content-Type':'application/json'},          
+const handleSubmit = () => {
+    fetch('https://blog-api.adaptable.app/api/sign-up', {
+         method: "put",
+         headers: {'Content-Type':'application/json'},        
          body: JSON.stringify({ 
             firstName: document.getElementById('firstName').value,
             lastName: document.getElementById('lastName').value,
             userName: document.getElementById('userName').value,
             password: document.getElementById('password').value,
         }),
+        
         })
         .catch(err=>{console.log(err)})
 }

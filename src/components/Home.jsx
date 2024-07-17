@@ -23,7 +23,7 @@ function Home() {
   const [array, setArray] = useState([]);
   const posts = [];
   useEffect(() => {
-    fetch("http://localhost:3000/api/all-posts", {
+    fetch("https://blog-api.adaptable.app/api/all-posts", {
       mode: "cors",
       headers: { 'authorization': localStorage.getItem("token") },
     }).then(async (res) => {

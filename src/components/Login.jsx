@@ -10,7 +10,7 @@ function Login(){
 
     const handleSubmit = async () => {
         
-        fetch('http://localhost:3000/api/log-in', {
+        fetch('https://blog-api.adaptable.app/api/log-in', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
@@ -22,7 +22,6 @@ function Login(){
             const a = await res.json();
             if(a.message !== null){
                 localStorage.setItem('token', a.message);
-                console.log(localStorage.getItem('token'))
                 navigate('/home')
             }
         })

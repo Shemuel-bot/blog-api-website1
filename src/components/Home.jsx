@@ -9,7 +9,7 @@ import createHost from "cross-domain-storage/host";
 
 const storageHost = createHost([
   {
-    origin: "http://localhost:5174",
+    origin: "https://blog-api-website1.vercel.app/",
     allowedMethods: ["get", "set", "remove"],
   },
   {

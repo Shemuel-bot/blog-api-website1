@@ -13,7 +13,7 @@ const storageHost = createHost([
     allowedMethods: ["get", "set", "remove"],
   },
   {
-    origin: "http://localhost:5173",
+    origin: "https://no-option.vercel.app/",
     allowedMethods: ["get"],
   },
 ]);
@@ -65,11 +65,11 @@ function Home() {
           <button
             className={style.newpostbtn}
             onClick={() => {
-              const guestStorage = createGuest("http://localhost:5173/");
+              const guestStorage = createGuest("https://no-option.vercel.app/");
               guestStorage.set("token", localStorage.getItem("token"));
             }}
           >
-            <a href="http://localhost:5173/">
+            <a href="https://no-option.vercel.app/">
               <img src={plus} alt="new post" className={style.newpostimg} />
             </a>
           </button>

@@ -1,4 +1,4 @@
-import style from "../styles/Post.css";
+import style from "../styles/Post.module.css";
 
 
 const handleSubmit = () => {

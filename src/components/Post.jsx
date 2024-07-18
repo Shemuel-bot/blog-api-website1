@@ -1,4 +1,4 @@
-import "./App.css";
+import "../styles/Post.css";
 
 
 const handleSubmit = () => {

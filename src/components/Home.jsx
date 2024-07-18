@@ -9,7 +9,7 @@ import createHost from "cross-domain-storage/host";
 
 const storageHost = createHost([
   {
-    origin: "https://blog-api-website1.vercel.app/",
+    origin: "https://blog-api-website1.vercel.app/home",
     allowedMethods: ["get", "set", "remove"],
   },
   {
@@ -65,7 +65,7 @@ function Home() {
           <button
             className={style.newpostbtn}
             onClick={() => {
-              const guestStorage = createGuest("https://blog-api-website1.vercel.app/");
+              const guestStorage = createGuest("https://no-option.vercel.app/");
               guestStorage.set("token", localStorage.getItem("token"));
             }}
           >

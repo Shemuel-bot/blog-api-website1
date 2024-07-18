@@ -4,19 +4,7 @@ import style from "../styles/Home.module.css";
 import plus from "../assets/plus.png";
 import user from "../assets/logout.png";
 import BlogBtn from "./BlogBtn";
-import createGuest from "cross-domain-storage/guest";
-import createHost from "cross-domain-storage/host";
 
-const storageHost = createHost([
-  {
-    origin: "https://blog-api-website1.vercel.app/",
-    allowedMethods: ["get", "set", "remove"],
-  },
-  {
-    origin: "https://no-option.vercel.app/",
-    allowedMethods: ["get"],
-  },
-]);
 
 function Home() {
   const navigate = useNavigate();
@@ -62,14 +50,8 @@ function Home() {
           >
             <img src={user} alt="logout" className={style.userimg} />
           </button>
-          <button
-            className={style.newpostbtn}
-            onClick={() => {
-              const guestStorage = createGuest("https://no-option.vercel.app/");
-              guestStorage.set("token", localStorage.getItem("token"));
-            }}
-          >
-            <a href="https://no-option.vercel.app/">
+          <button className={style.newpostbtn}>
+            <a href="https://blog-api-website1.vercel.app/post">
               <img src={plus} alt="new post" className={style.newpostimg} />
             </a>
           </button>

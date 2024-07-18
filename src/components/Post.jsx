@@ -28,7 +28,7 @@ function App() {
     <>
       <h4>Title</h4>
       <input type="text" placeholder="Title..." id="title" />
-      <h4>Content</h4>z
+      <h4>Content</h4>
       <textarea
         name=""
         id="content"

@@ -21,7 +21,7 @@ input{
   height: 25px;
   border-radius: 5px;
 }
- textarea{
+ .textarea{
   width: 400px;
   height: 450px;
   resize: none;

@@ -1,4 +1,4 @@
-import "../styles/App.css";
+import style from "../styles/Post.css";
 
 
 const handleSubmit = () => {
@@ -29,7 +29,7 @@ function App() {
       <h4>Title</h4>
       <input type="text" placeholder="Title..." id="title" />
       <h4>Content</h4>
-      <textarea
+      <textarea className={style.textarea}
         name=""
         id="content"
         placeholder="Blog Content here..."
